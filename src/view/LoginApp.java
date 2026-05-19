@@ -47,7 +47,6 @@ public class LoginApp extends JFrame{
         tombolLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Ketika tombol login diklik, maka program akan berpindah ke halaman ViewData()
                 dispose();
                 new MenuUtama();
             }

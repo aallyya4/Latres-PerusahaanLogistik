@@ -7,13 +7,10 @@ package Model;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-/**
- *
- * @author rafli
- */
+
 public class TabelKendaraan extends AbstractTableModel {
 
-    // Berfungsi untuk menyimpan daftar mahasiswa
+    // Berfungsi untuk menyimpan daftar kendaraan
     List<ModelKendaraan> daftarKendaraan;
 
     /*

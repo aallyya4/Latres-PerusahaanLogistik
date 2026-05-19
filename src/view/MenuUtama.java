@@ -11,10 +11,7 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 
 public class MenuUtama extends JFrame{
     JLabel header = new JLabel("Selamat Datang!");
@@ -34,14 +31,12 @@ public class MenuUtama extends JFrame{
 
         add(header);
         add(greet);
-//        add(scrollPane);
         add(tombolKendaraan);
         add(tombolSopir);
         add(tombolLogOut);
 
         header.setBounds(20, 5, 440, 24);
         greet.setBounds(20,30,440,24);
-//        scrollPane.setBounds(20, 36, 512, 320);
         tombolKendaraan.setBounds(20, 56, 512, 40);
         tombolSopir.setBounds(20, 100, 512, 40);
         tombolLogOut.setBounds(20, 144, 512, 40);
@@ -49,7 +44,6 @@ public class MenuUtama extends JFrame{
         tombolKendaraan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Ketika tombol login diklik, maka program akan berpindah ke halaman ViewData()
                 dispose();
                 new DataKendaraan();
             }
@@ -58,7 +52,6 @@ public class MenuUtama extends JFrame{
         tombolSopir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Ketika tombol login diklik, maka program akan berpindah ke halaman ViewData()
                 dispose();
                 new DataSopir();
             }
@@ -67,7 +60,6 @@ public class MenuUtama extends JFrame{
         tombolLogOut.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Ketika tombol login diklik, maka program akan berpindah ke halaman ViewData()
                 dispose();
                 new LoginApp();
             }

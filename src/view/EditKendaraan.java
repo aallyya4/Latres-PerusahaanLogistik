@@ -64,7 +64,6 @@ public class EditKendaraan extends JFrame{
         tombolKembali.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Ketika tombol login diklik, maka program akan berpindah ke halaman ViewData()
                 dispose();
                 new DataKendaraan();
             }
@@ -73,7 +72,6 @@ public class EditKendaraan extends JFrame{
         tombolEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Ketika tombol login diklik, maka program akan berpindah ke halaman ViewData()
             controller.editKendaraan(kendaraan.getId());
             }
         });        

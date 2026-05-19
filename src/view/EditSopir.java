@@ -64,16 +64,14 @@ public class EditSopir extends JFrame{
         tombolKembali.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Ketika tombol login diklik, maka program akan berpindah ke halaman ViewData()
                 dispose();
-                new MenuUtama();
+                new DataSopir();
             }
         });
 
         tombolEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Ketika tombol login diklik, maka program akan berpindah ke halaman ViewData()
                 dispose();
                 controller.editSopir(sopir.getId());
             }

@@ -4,11 +4,6 @@ public class ModelKendaraan {
     private Integer id;
     private String plat_nomor, jenis, merk;
     
-    /*
-      Membuat getter dan setter untuk mengambil/mengatur informasi mahasiswa.
-      Karena sekarang atribut id, nama, dan nim diubah menjadi private, 
-      sehingga atribut2 tersebut tidak dapat diakses secara langsung (Prinsip Enkapsulasi)
-    */
     public Integer getId() {
         return id;
     }

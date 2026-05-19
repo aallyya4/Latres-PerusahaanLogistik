@@ -3,15 +3,15 @@ package Model;
 import java.util.List;
 
 public interface InterDAOsopir {
-    // Method untuk memasukkan suatu data mahasiswa
+    // Method untuk memasukkan suatu data sopir
     public void insert(ModelSopir sopir);
     
-    // Method untuk mengupdate (mengedit) suatu data mahasiswa
+    // Method untuk mengupdate (mengedit) suatu data sopir
     public void update(ModelSopir sopir);
     
-    // Method untuk menghapus suatu data mahasiswa
+    // Method untuk menghapus suatu data sopir
     public void delete(int id);
     
-    // Method untuk mengambil data mahasiswa
+    // Method untuk mengambil data sopir
     public List<ModelSopir> getAll();
 }
