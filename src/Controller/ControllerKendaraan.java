@@ -106,7 +106,7 @@ public class ControllerKendaraan {
         }
     }
     
-    public void editSopir(int id) {
+    public void editKendaraan(int id) {
         try {
             /*
               Membuat instance "mahasiswa yang mau diedit" buat 

@@ -4,7 +4,9 @@
  */
 package view;
 
-//import Controller.ControllerMahasiswa;
+import Controller.ControllerKendaraan;
+import Controller.ControllerSopir;
+import Model.ModelSopir;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -15,49 +17,49 @@ import javax.swing.*;
  */
 public class EditSopir extends JFrame{
     JLabel header = new JLabel("Edit Kendaraan");
-    JLabel labelEditIDS = new JLabel("ID");
     JLabel labelEditNama = new JLabel("Nama Sopir");
     JLabel labelEditSIM = new JLabel("NO SIM");
     JLabel labelEditHP = new JLabel("NO HP");
-    JTextField EditIDS = new JTextField();
     JTextField EditNama = new JTextField();
     JTextField EditSIM = new JTextField();
     JTextField EditHP = new JTextField();
-    JButton tombolKembali = new JButton("Login");
-    JButton tombolTambah = new JButton("Login");
+    JButton tombolKembali = new JButton("Kembali");
+    JButton tombolEdit = new JButton("Edit");
     
-    public EditSopir(){
+    public EditSopir(ModelSopir sopir){
+        ControllerSopir controller;
         setTitle("Edit Data Sopir");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
-        setSize(480, 270);
+        setSize(480, 370);
 
         add(header);
-        add(labelEditIDS);
         add(labelEditNama);
         add(labelEditSIM);
         add(labelEditHP);
-        add(EditIDS);
         add(EditNama);
         add(EditSIM);
         add(EditHP);
         add(tombolKembali);
-        add(tombolTambah);
+        add(tombolEdit);
         
         header.setBounds(20, 5, 440, 30);
-        labelEditIDS.setBounds(20, 35, 440, 20);
-        EditIDS.setBounds(20, 60, 440, 36);
-        labelEditNama.setBounds(20, 100, 440, 20);
-        EditNama.setBounds(20, 125, 440, 36);
-        labelEditSIM.setBounds(20, 165, 440, 20);
-        EditSIM.setBounds(20, 190, 440, 36);
-        labelEditHP.setBounds(20, 230, 440, 20);
-        EditHP.setBounds(20, 255, 440, 36);
-        tombolKembali.setBounds(20, 295, 440, 40);
-        tombolTambah.setBounds(20, 320, 440, 40);
+        labelEditNama.setBounds(20, 35, 440, 20);
+        EditNama.setBounds(20, 60, 440, 36);
+        labelEditSIM.setBounds(20, 100, 440, 20);
+        EditSIM.setBounds(20, 125, 440, 36);
+        labelEditHP.setBounds(20, 165, 440, 20);
+        EditHP.setBounds(20, 190, 440, 36);
+        tombolKembali.setBounds(20, 230, 440, 40);
+        tombolEdit.setBounds(20, 275, 440, 40);
 
+        EditNama.setText(sopir.getNama());
+        EditSIM.setText(sopir.getNoSIM());
+        EditHP.setText(sopir.getNoHP());        
+        
         setVisible(true);
+        controller = new ControllerSopir(this);
         
         tombolKembali.addActionListener(new ActionListener() {
             @Override
@@ -68,12 +70,12 @@ public class EditSopir extends JFrame{
             }
         });
 
-        tombolTambah.addActionListener(new ActionListener() {
+        tombolEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Ketika tombol login diklik, maka program akan berpindah ke halaman ViewData()
                 dispose();
-                new MenuUtama();
+                controller.editSopir(sopir.getId());
             }
         });        
     }

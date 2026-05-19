@@ -115,7 +115,7 @@ public class DataKendaraan extends JFrame{
                       diberikan ke halaman EditData()
                      */
                     dispose();
-                    new EditKendaraan();
+                    new EditKendaraan(kendaraanTerpilih);
                 } else {
                     JOptionPane.showMessageDialog(null, "Data belum dipilih.");
                 }
@@ -144,6 +144,15 @@ public class DataKendaraan extends JFrame{
                 } else {
                     JOptionPane.showMessageDialog(null, "Data belum dipilih.");
                 }
+            }
+        });
+        
+         tombolKembali.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Ketika tombol tambah diklik, maka program akan berpindah ke halaman InputData()
+                dispose();
+                new MenuUtama();
             }
         });
     }

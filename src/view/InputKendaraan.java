@@ -49,7 +49,7 @@ public class InputKendaraan extends JFrame{
         labelInputJenis.setBounds(20, 100, 440, 20);
         inputJenis.setBounds(20, 125, 440, 36);
         labelInputMerk.setBounds(20, 165, 440, 20);
-        inputMerk.setBounds(20, 190, 440, 36);;
+        inputMerk.setBounds(20, 190, 440, 36);
         tombolKembali.setBounds(20, 230, 440, 40);
         tombolTambah.setBounds(20, 275, 440, 40);
 

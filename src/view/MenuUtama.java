@@ -9,8 +9,6 @@ package view;
  * @author sabri
  */
 
-////import Controller.ControllerMahasiswa;
-//import Model.Mahasiswa.ModelMahasiswa;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -26,9 +24,6 @@ public class MenuUtama extends JFrame{
     JButton tombolLogOut = new JButton("Log Out");
     
     public MenuUtama() {
-//        tableModel = new DefaultTableModel(namaKolom, 0);
-//        table = new JTable(tableModel);
-//        scrollPane = new JScrollPane(table);
 
         setTitle("Logistik App - MENU UTAMA");
         setVisible(true);

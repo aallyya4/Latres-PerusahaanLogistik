@@ -19,10 +19,9 @@ public class DAOkendaraan implements InterDAOkendaraan {
             */
             PreparedStatement statement;
             statement = Connector.Connect().prepareStatement(query);
-            statement.setInt(1, kendaraan.getId());
-            statement.setString(2, kendaraan.getPlat());
-            statement.setString(3, kendaraan.getJenis());
-            statement.setString(4, kendaraan.getMerk());
+            statement.setString(1, kendaraan.getPlat());
+            statement.setString(2, kendaraan.getJenis());
+            statement.setString(3, kendaraan.getMerk());
             
             // Menjalankan query untuk memasukkan data mahasiswa baru
             statement.executeUpdate();
@@ -109,7 +108,7 @@ public class DAOkendaraan implements InterDAOkendaraan {
                 Menyimpan query database ke dalam varibel "query".
                 Dalam hal ini, kita akan mengambil seluruh data mahasiswa pada tabel "mahasiswa".
             */
-            String query = "SELECT * FROM sopir;";
+            String query = "SELECT * FROM kendaraan;";
             
              // Mengeksekusi query dan menyimpannya ke dalam variabel "resultSet".
             ResultSet resultSet = statement.executeQuery(query);

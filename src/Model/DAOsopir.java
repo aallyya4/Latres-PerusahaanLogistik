@@ -11,7 +11,7 @@ public class DAOsopir implements InterDAOsopir {
     public void insert(ModelSopir sopir) {
        try {
             // Perintah query disimpan ke dalam variabel "query"
-            String query = "INSERT INTO kendaraan (nama, no_sim, no_hp) VALUES (?, ?, ?);";
+            String query = "INSERT INTO sopir (nama, no_sim, no_hp) VALUES (?, ?, ?);";
             
             /* 
               Memasukkan nama dan nim dari input user ke dalam query untuk 
@@ -19,10 +19,9 @@ public class DAOsopir implements InterDAOsopir {
             */
             PreparedStatement statement;
             statement = Connector.Connect().prepareStatement(query);
-            statement.setInt(1, sopir.getId());
-            statement.setString(2, sopir.getNama());
-            statement.setString(3, sopir.getNoSIM());
-            statement.setString(4, sopir.getNoHP());
+            statement.setString(1, sopir.getNama());
+            statement.setString(2, sopir.getNoSIM());
+            statement.setString(3, sopir.getNoHP());
             
             // Menjalankan query untuk memasukkan data mahasiswa baru
             statement.executeUpdate();
@@ -39,7 +38,7 @@ public class DAOsopir implements InterDAOsopir {
     public void update(ModelSopir sopir) {
         try {
             // Perintah query disimpan ke dalam variabel "query"
-            String query = "UPDATE kendaraan SET nama=?, no_sim=?, no_hp=? WHERE id=?;";
+            String query = "UPDATE sopir SET nama=?, no_sim=?, no_hp=? WHERE id=?;";
             
             /* 
               Memasukkan nama dan nim dari input user 

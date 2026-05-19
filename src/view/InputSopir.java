@@ -4,7 +4,7 @@
  */
 package view;
 
-//import Controller.ControllerMahasiswa;
+import Controller.ControllerSopir;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -14,31 +14,28 @@ import javax.swing.*;
  * @author sabri
  */
 public class InputSopir extends JFrame{
+    ControllerSopir controller;
     JLabel header = new JLabel("Input Sopir");
-    JLabel labelInputIDS = new JLabel("ID");
     JLabel labelInputNama = new JLabel("Nama Sopir");
     JLabel labelInputSIM = new JLabel("NO SIM");
     JLabel labelInputHP = new JLabel("NO HP");
-    JTextField inputIDS = new JTextField();
     JTextField inputNama = new JTextField();
     JTextField inputSIM = new JTextField();
     JTextField inputHP = new JTextField();
-    JButton tombolKembali = new JButton("Login");
-    JButton tombolTambah = new JButton("Login");
+    JButton tombolKembali = new JButton("Kembali");
+    JButton tombolTambah = new JButton("Tambah");
     
     public InputSopir(){
         setTitle("Tambah Data Sopir");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
-        setSize(480, 270);
+        setSize(480, 370);
 
         add(header);
-        add(labelInputIDS);
         add(labelInputNama);
         add(labelInputSIM);
         add(labelInputHP);
-        add(inputIDS);
         add(inputNama);
         add(inputSIM);
         add(inputHP);
@@ -46,25 +43,24 @@ public class InputSopir extends JFrame{
         add(tombolTambah);
         
         header.setBounds(20, 5, 440, 30);
-        labelInputIDS.setBounds(20, 35, 440, 20);
-        inputIDS.setBounds(20, 60, 440, 36);
-        labelInputNama.setBounds(20, 100, 440, 20);
-        inputNama.setBounds(20, 125, 440, 36);
-        labelInputSIM.setBounds(20, 165, 440, 20);
-        inputSIM.setBounds(20, 190, 440, 36);
-        labelInputHP.setBounds(20, 230, 440, 20);
-        inputHP.setBounds(20, 255, 440, 36);
-        tombolKembali.setBounds(20, 295, 440, 40);
-        tombolTambah.setBounds(20, 320, 440, 40);
+        labelInputNama.setBounds(20, 35, 440, 20);
+        inputNama.setBounds(20, 60, 440, 36);
+        labelInputSIM.setBounds(20, 100, 440, 20);
+        inputSIM.setBounds(20, 125, 440, 36);
+        labelInputHP.setBounds(20, 165, 440, 20);
+        inputHP.setBounds(20, 190, 440, 36);
+        tombolKembali.setBounds(20, 230, 440, 40);
+        tombolTambah.setBounds(20, 275, 440, 40);
 
         setVisible(true);
+        controller = new ControllerSopir(this);  
         
         tombolKembali.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Ketika tombol login diklik, maka program akan berpindah ke halaman ViewData()
                 dispose();
-                new MenuUtama();
+                new DataSopir();
             }
         });
 
@@ -72,8 +68,7 @@ public class InputSopir extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Ketika tombol login diklik, maka program akan berpindah ke halaman ViewData()
-                dispose();
-                new MenuUtama();
+                controller.insertSopir();
             }
         });        
     }
