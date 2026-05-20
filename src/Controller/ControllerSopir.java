@@ -113,4 +113,18 @@ public class ControllerSopir {
             showAllSopir();
         }
     }
+    
+    public void cariSopir(String keyword) {
+        daftarSopir = daoSopir.search(keyword);
+        
+        if (daftarSopir.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Sopir tidak ditemukan!");
+            showAllSopir(); // tampilkan lagi semua data
+        } else {
+            TabelSopir table = new TabelSopir(daftarSopir);
+            halamanTable.getTableSopir().setModel(table);
+
+            JOptionPane.showMessageDialog(null, "Sopir berhasil ditemukan.");
+        }
+    }
 }

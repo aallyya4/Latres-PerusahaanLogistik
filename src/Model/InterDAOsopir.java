@@ -14,4 +14,7 @@ public interface InterDAOsopir {
     
     // Method untuk mengambil data sopir
     public List<ModelSopir> getAll();
+    
+    // Method cari sopir
+    public List<ModelSopir> search(String keyword);
 }

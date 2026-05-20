@@ -106,4 +106,35 @@ public class DAOkendaraan implements InterDAOkendaraan {
         }
         return listKendaraan;
     }
+    
+    @Override
+    public List<ModelKendaraan> search(String keyword) {
+        List<ModelKendaraan> listKendaraan = new ArrayList<>();
+
+        try {
+            String query = "SELECT * FROM kendaraan WHERE plat_nomor LIKE ? OR merk LIKE ?";
+            PreparedStatement statement;
+            statement = Connector.Connect().prepareStatement(query);
+            statement.setString(1, "%" + keyword + "%");
+            statement.setString(2, "%" + keyword + "%");
+
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                ModelKendaraan kendaraan = new ModelKendaraan();
+
+                kendaraan.setId(rs.getInt("id"));
+                kendaraan.setPlat(rs.getString("plat_nomor"));
+                kendaraan.setJenis(rs.getString("jenis"));
+                kendaraan.setMerk(rs.getString("merk"));
+
+                listKendaraan.add(kendaraan);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listKendaraan;
+    }
 }

@@ -14,4 +14,7 @@ public interface InterDAOkendaraan {
     
     // Method untuk mengambil data kendaraan
     public List<ModelKendaraan> getAll();
+    
+    // Method cari kendaraan
+    public List<ModelKendaraan> search(String keyword);
 }

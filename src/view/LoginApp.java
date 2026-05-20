@@ -4,9 +4,13 @@
  */
 package view;
 
-//import Controller.ControllerMahasiswa;
+import Model.Connector;
+import Model.Session;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.*;
 
 /**
@@ -18,7 +22,7 @@ public class LoginApp extends JFrame{
     JLabel labelInputUsername = new JLabel("Username");
     JLabel labelInputPassword = new JLabel("Password");
     JTextField inputUsername = new JTextField();
-    JTextField inputPassword = new JTextField();
+    JPasswordField inputPassword = new JPasswordField();
     JButton tombolLogin = new JButton("Login");
     
     public LoginApp(){
@@ -47,9 +51,72 @@ public class LoginApp extends JFrame{
         tombolLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                new MenuUtama();
+                loginButtonClicked();
             }
         });        
+    }
+    
+    private void loginButtonClicked() {
+        String username = inputUsername.getText();
+        String password = inputPassword.getText();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Username dan password tidak boleh kosong!",
+                    "Peringatan",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            Connection conn = Connector.Connect();
+
+            if (conn == null) {
+                JOptionPane.showMessageDialog(this,
+                        "Gagal terhubung ke database!",
+                        "Error Database",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            String query = "SELECT * FROM users WHERE username = ? AND password = ?";
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, username);
+            statement.setString(2, password);
+
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                // simpan user login ke session
+                Session.setUsername(username);
+
+                JOptionPane.showMessageDialog(this,
+                        "Login berhasil!",
+                        "Sukses",
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                dispose();
+                new MenuUtama();
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Username atau password salah!",
+                        "Login Gagal",
+                        JOptionPane.ERROR_MESSAGE);
+
+                inputPassword.setText("");
+                inputUsername.requestFocus();
+            }
+
+            result.close();
+            statement.close();
+            conn.close();
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Error: " + ex.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
     }
 }

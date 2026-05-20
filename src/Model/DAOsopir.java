@@ -106,4 +106,35 @@ public class DAOsopir implements InterDAOsopir {
         }
         return listSopir;
     }
+    
+    @Override
+    public List<ModelSopir> search(String keyword) {
+        List<ModelSopir> listSopir = new ArrayList<>();
+
+        try {
+            String query = "SELECT * FROM sopir WHERE nama LIKE ? OR no_sim LIKE ?";
+            PreparedStatement statement;
+            statement = Connector.Connect().prepareStatement(query);
+            statement.setString(1, "%" + keyword + "%");
+            statement.setString(2, "%" + keyword + "%");
+
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                ModelSopir sopir = new ModelSopir();
+
+                sopir.setId(rs.getInt("id"));
+                sopir.setNama(rs.getString("nama"));
+                sopir.setNoSIM(rs.getString("no_sim"));
+                sopir.setNoHP(rs.getString("no_hp"));
+
+                listSopir.add(sopir);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listSopir;
+    }
 }

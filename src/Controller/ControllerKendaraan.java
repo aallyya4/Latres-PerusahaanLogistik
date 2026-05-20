@@ -112,4 +112,18 @@ public class ControllerKendaraan {
             showAllKendaraan();
         }
     }
+    
+    public void cariKendaraan(String keyword) {
+        daftarKendaraan = daoKendaraan.search(keyword);
+        
+        if (daftarKendaraan.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Kendaraan tidak ditemukan!");
+            showAllKendaraan(); // tampilkan lagi semua data
+        } else {
+            TabelKendaraan table = new TabelKendaraan(daftarKendaraan);
+            halamanTable.getTableKendaraan().setModel(table);
+
+            JOptionPane.showMessageDialog(null, "Kendaraan berhasil ditemukan.");
+        }
+    }
 }

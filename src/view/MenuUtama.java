@@ -12,6 +12,7 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import Model.Session;
 
 public class MenuUtama extends JFrame{
     JLabel header = new JLabel("Selamat Datang!");
@@ -21,7 +22,7 @@ public class MenuUtama extends JFrame{
     JButton tombolLogOut = new JButton("Log Out");
     
     public MenuUtama() {
-
+        String userLogin = Session.getUsername();
         setTitle("Logistik App - MENU UTAMA");
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,6 +31,7 @@ public class MenuUtama extends JFrame{
         setSize(552, 230);
 
         add(header);
+        header.setText("Selamat datang " + Session.getUsername());
         add(greet);
         add(tombolKendaraan);
         add(tombolSopir);

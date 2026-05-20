@@ -25,6 +25,9 @@ public class DataKendaraan extends JFrame{
     JButton tombolEdit = new JButton("Edit");
     JButton tombolHapus = new JButton("Hapus");
     JButton tombolKembali = new JButton ("Kembali ke Menu");
+    JLabel labelCari = new JLabel("Cari:");
+    JTextField inputCari = new JTextField();
+    JButton tombolCari = new JButton("Cari Data");
     
     JTable table;
     DefaultTableModel tableModel;
@@ -50,8 +53,14 @@ public class DataKendaraan extends JFrame{
         add(tombolEdit);
         add(tombolHapus);
         add(tombolKembali);
+        add(labelCari);
+        add(inputCari);
+        add(tombolCari);
 
         header.setBounds(20, 5, 440, 24);
+        tombolCari.setBounds(420, 5, 112, 24);
+        inputCari.setBounds(270, 5, 140, 24);
+        labelCari.setBounds(230, 5, 40, 24);
         scrollPane.setBounds(20, 35, 512, 320);
         tombolTambah.setBounds(20, 360, 512, 40);
         tombolEdit.setBounds(20, 404, 512, 40);
@@ -128,6 +137,24 @@ public class DataKendaraan extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 new MenuUtama();
+            }
+        });
+         
+        tombolCari.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String keyword = inputCari.getText().trim();
+
+                if (keyword.isEmpty()) {
+                    JOptionPane.showMessageDialog(null,
+                            "Tidak ada inputan!",
+                            "Peringatan",
+                            JOptionPane.WARNING_MESSAGE);
+                    controller.showAllKendaraan();
+                    return;
+                } else {
+                    controller.cariKendaraan(keyword);
+                }
             }
         });
     }
